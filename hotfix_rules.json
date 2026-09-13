@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": 2026091302,
+  "revision": 2026091303,
   "description": "zShip declarative self-healing rules. Data only; never executable code.",
   "resolver": {
     "auto_lazy": {
@@ -31,7 +31,8 @@
     "candidate_detection": {
       "enabled": true,
       "min_alternative_success_streak": 3,
-      "recent_hours": 24
+      "recent_hours": 24,
+      "min_auto_lazy_success_streak": 3
     }
   },
   "providers": {
