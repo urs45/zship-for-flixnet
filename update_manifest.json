@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "channel": "stable",
-  "latest_addon_version": "2026.09.13.32",
-  "message": "Manuelle Hotfix- und zShip-Versionspruefung sind jetzt getrennt; Hotfix-Pruefung zeigt die aktive Revision eindeutig an.",
+  "latest_addon_version": "2026.09.13.33",
+  "message": "zShip 2026.09.13.33 verfügbar – Film-AutoWatch90 Laufzeit-Fix.",
   "hotfix_revision": 2026091304,
   "hotfix_file": "hotfix_rules.json",
   "download_url": "",
