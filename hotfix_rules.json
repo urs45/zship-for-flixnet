@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "revision": 2026091303,
+  "revision": 2026091304,
   "description": "zShip declarative self-healing rules. Data only; never executable code.",
   "resolver": {
     "auto_lazy": {
@@ -121,6 +121,15 @@
           "accept": "hls"
         }
       ]
+    },
+    "kinoking": {
+      "force_lazy_resolve": true
+    },
+    "moflix": {
+      "force_lazy_resolve": true
+    },
+    "movie2k": {
+      "force_lazy_resolve": true
     }
   }
 }
