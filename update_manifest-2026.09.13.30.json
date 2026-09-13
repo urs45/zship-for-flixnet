@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "channel": "stable",
+  "latest_addon_version": "2026.09.13.30",
+  "message": "Lokale Hotfix-Kandidaten + optionaler Admin-Hinweis; Standard-Hinweise fuer Kandidaten sind AUS.",
+  "hotfix_revision": 2026091302,
+  "hotfix_file": "hotfix_rules.json",
+  "download_url": "",
+  "sha256": ""
+}
