@@ -1,9 +1,9 @@
 {
   "schema": 1,
   "channel": "stable",
-  "latest_addon_version": "2026.09.13.31",
-  "message": "Auto-Lazy-Hotfix-Kandidaten erst nach 3 bestaetigten erfolgreichen Lazy-Resolve-Laeufen.",
-  "hotfix_revision": 2026091303,
+  "latest_addon_version": "2026.09.13.32",
+  "message": "Manuelle Hotfix- und zShip-Versionspruefung sind jetzt getrennt; Hotfix-Pruefung zeigt die aktive Revision eindeutig an.",
+  "hotfix_revision": 2026091304,
   "hotfix_file": "hotfix_rules.json",
   "download_url": "",
   "sha256": ""
