@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "channel": "stable",
+  "latest_addon_version": "2026.09.13.34",
+  "message": "zShip 2026.09.13.34 verfügbar",
+  "hotfix_revision": 2026091304,
+  "hotfix_file": "hotfix_rules.json",
+  "download_url": "",
+  "sha256": ""
+}
