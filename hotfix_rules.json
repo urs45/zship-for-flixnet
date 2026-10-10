@@ -1,126 +1,8 @@
 {
-  "schema": 1,
-  "revision": 2026091304,
   "description": "zShip declarative self-healing rules. Data only; never executable code.",
-  "resolver": {
-    "auto_lazy": {
-      "enabled": true,
-      "slow_seconds": 8.0,
-      "min_eager_calls": 2,
-      "failure_window_seconds": 86400
-    },
-    "generic_extract": {
-      "enabled": true,
-      "timeout": 6,
-      "max_bytes": 524288,
-      "patterns": [
-        "(?:file|src|url)\\s*[:=]\\s*[\\\"']([^\\\"']+\\.(?:m3u8|mp4)(?:\\?[^\\\"']*)?)[\\\"']",
-        "<source[^>]+src=[\\\"']([^\\\"']+)[\\\"']"
-      ]
-    },
-    "preflight_rules": [
-      {
-        "id": "movie2k2-firestream-hls",
-        "provider": "movie2k2",
-        "hoster_contains": "firestream",
-        "url_contains": ".m3u8",
-        "type": "hls_first_segment",
-        "timeout": 5
-      }
-    ],
-    "candidate_detection": {
-      "enabled": true,
-      "min_alternative_success_streak": 3,
-      "recent_hours": 24,
-      "min_auto_lazy_success_streak": 3
-    }
-  },
   "providers": {
     "hdfilme": {
       "force_lazy_resolve": true
-    },
-    "movie2k2": {
-      "force_lazy_resolve": true
-    },
-    "vixstream": {
-      "extract": {
-        "video_id_patterns": [
-          "\\bid\\s*:\\s*[\\\"']?([^,\\\"'\\s}]+)",
-          "[\\\"']id[\\\"']\\s*:\\s*[\\\"']?([^,\\\"'\\s}]+)"
-        ],
-        "token_patterns": [
-          "[\\\"']?token[\\\"']?\\s*:\\s*[\\\"']([^\\\"']+)",
-          "\\btoken\\s*=\\s*[\\\"']([^\\\"']+)"
-        ],
-        "expires_patterns": [
-          "[\\\"']?expires[\\\"']?\\s*:\\s*[\\\"']([^\\\"']+)",
-          "\\bexpires\\s*=\\s*[\\\"']([^\\\"']+)"
-        ],
-        "playlist_patterns": [
-          "\\burl\\s*:\\s*[\\\"']([^\\\"']+)",
-          "[\\\"']url[\\\"']\\s*:\\s*[\\\"']([^\\\"']+)",
-          "(https?://[^\\\"'\\s]+/playlist/[^\\\"'\\s]+)"
-        ]
-      },
-      "playlist_strategies": [
-        {
-          "id": "master-api-xhr-origin",
-          "url": "master",
-          "referer": "api",
-          "origin": "root",
-          "accept": "xhr"
-        },
-        {
-          "id": "master-api-hls-origin",
-          "url": "master",
-          "referer": "api",
-          "origin": "root",
-          "accept": "hls"
-        },
-        {
-          "id": "master-embed-hls-origin",
-          "url": "master",
-          "referer": "embed",
-          "origin": "root",
-          "accept": "hls",
-          "sec_fetch": "cors"
-        },
-        {
-          "id": "master-root-hls-origin",
-          "url": "master",
-          "referer": "root",
-          "origin": "root",
-          "accept": "hls"
-        },
-        {
-          "id": "master-api-xhr-noorigin",
-          "url": "master",
-          "referer": "api",
-          "origin": "omit",
-          "accept": "xhr"
-        },
-        {
-          "id": "legacy-api-xhr-origin",
-          "url": "legacy",
-          "referer": "api",
-          "origin": "root",
-          "accept": "xhr"
-        },
-        {
-          "id": "legacy-embed-hls-origin",
-          "url": "legacy",
-          "referer": "embed",
-          "origin": "root",
-          "accept": "hls"
-        },
-        {
-          "id": "legacy-root-hls-origin",
-          "url": "legacy",
-          "referer": "root",
-          "origin": "root",
-          "accept": "hls"
-        }
-      ]
     },
     "kinoking": {
       "force_lazy_resolve": true
@@ -130,6 +12,125 @@
     },
     "movie2k": {
       "force_lazy_resolve": true
+    },
+    "movie2k2": {
+      "force_lazy_resolve": true
+    },
+    "vixstream": {
+      "extract": {
+        "expires_patterns": [
+          "[\\\"']?expires[\\\"']?\\s*:\\s*[\\\"']([^\\\"']+)",
+          "\\bexpires\\s*=\\s*[\\\"']([^\\\"']+)"
+        ],
+        "playlist_patterns": [
+          "\\burl\\s*:\\s*[\\\"']([^\\\"']+)",
+          "[\\\"']url[\\\"']\\s*:\\s*[\\\"']([^\\\"']+)",
+          "(https?://[^\\\"'\\s]+/playlist/[^\\\"'\\s]+)"
+        ],
+        "token_patterns": [
+          "[\\\"']?token[\\\"']?\\s*:\\s*[\\\"']([^\\\"']+)",
+          "\\btoken\\s*=\\s*[\\\"']([^\\\"']+)"
+        ],
+        "video_id_patterns": [
+          "\\bid\\s*:\\s*[\\\"']?([^,\\\"'\\s}]+)",
+          "[\\\"']id[\\\"']\\s*:\\s*[\\\"']?([^,\\\"'\\s}]+)"
+        ]
+      },
+      "playlist_strategies": [
+        {
+          "accept": "xhr",
+          "id": "master-api-xhr-origin",
+          "origin": "root",
+          "referer": "api",
+          "url": "master"
+        },
+        {
+          "accept": "hls",
+          "id": "master-api-hls-origin",
+          "origin": "root",
+          "referer": "api",
+          "url": "master"
+        },
+        {
+          "accept": "hls",
+          "id": "master-embed-hls-origin",
+          "origin": "root",
+          "referer": "embed",
+          "sec_fetch": "cors",
+          "url": "master"
+        },
+        {
+          "accept": "hls",
+          "id": "master-root-hls-origin",
+          "origin": "root",
+          "referer": "root",
+          "url": "master"
+        },
+        {
+          "accept": "xhr",
+          "id": "master-api-xhr-noorigin",
+          "origin": "omit",
+          "referer": "api",
+          "url": "master"
+        },
+        {
+          "accept": "xhr",
+          "id": "legacy-api-xhr-origin",
+          "origin": "root",
+          "referer": "api",
+          "url": "legacy"
+        },
+        {
+          "accept": "hls",
+          "id": "legacy-embed-hls-origin",
+          "origin": "root",
+          "referer": "embed",
+          "url": "legacy"
+        },
+        {
+          "accept": "hls",
+          "id": "legacy-root-hls-origin",
+          "origin": "root",
+          "referer": "root",
+          "url": "legacy"
+        }
+      ]
     }
-  }
+  },
+  "resolver": {
+    "auto_lazy": {
+      "enabled": true,
+      "failure_window_seconds": 86400,
+      "min_eager_calls": 2,
+      "slow_seconds": 8.0
+    },
+    "candidate_detection": {
+      "enabled": true,
+      "min_alternative_success_streak": 3,
+      "min_auto_lazy_success_streak": 3,
+      "min_hoster_failure_links": 2,
+      "recent_hours": 24
+    },
+    "generic_extract": {
+      "enabled": true,
+      "max_bytes": 524288,
+      "patterns": [
+        "(?:file|src|url)\\s*[:=]\\s*[\\\"']([^\\\"']+\\.(?:m3u8|mp4)(?:\\?[^\\\"']*)?)[\\\"']",
+        "<source[^>]+src=[\\\"']([^\\\"']+)[\\\"']"
+      ],
+      "timeout": 6
+    },
+    "preflight_rules": [
+      {
+        "hoster_contains": "firestream",
+        "id": "movie2k2-firestream-hls",
+        "provider": "movie2k2",
+        "timeout": 5,
+        "type": "hls_first_segment",
+        "url_contains": ".m3u8"
+      }
+    ]
+  },
+  "revision": 2026100901,
+  "schema": 1
 }
