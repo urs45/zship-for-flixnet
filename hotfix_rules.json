@@ -8,7 +8,15 @@
       "force_lazy_resolve": true
     },
     "moflix": {
-      "force_lazy_resolve": true
+      "force_lazy_resolve": true,
+      "search_strategies": [
+        {
+          "id": "html_bootstrap"
+        },
+        {
+          "id": "legacy_api"
+        }
+      ]
     },
     "movie2k": {
       "force_lazy_resolve": true
@@ -131,6 +139,6 @@
       }
     ]
   },
-  "revision": 2026100901,
+  "revision": 2026101501,
   "schema": 1
 }
